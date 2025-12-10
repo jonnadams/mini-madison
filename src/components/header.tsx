@@ -6,7 +6,7 @@ const Header = () => {
     <header className="w-full border-b p-4">
       <div className="flex justify-between items-center">
         <div className="flex-start">
-          <div className="text-2xl font-bold">Mini Madison</div>
+          <Link to="/"><div className="text-2xl font-bold">Mini Madison</div></Link>
         </div>
         <div className="space-x-2 flex items-center">
           {/* Use a simple Link for navigation instead of a Button */}
