@@ -1,0 +1,4 @@
+[
+  { "code": "SAVE15", "discount": "15%" },
+  { "code": "SAVE10", "discount": "$10" }
+]

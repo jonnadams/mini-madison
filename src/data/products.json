@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Shampoo", "price": 24.99 },
+  { "id": 2, "name": "Conditioner", "price": 24.99 },
+  { "id": 3, "name": "Hair Color", "price": 34.99 },
+  { "id": 4, "name": "Styling Serum", "price": 19.99 }
+]
