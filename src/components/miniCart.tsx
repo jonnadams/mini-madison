@@ -5,6 +5,7 @@ import { Badge } from "./ui/badge"
 import { useCart } from "@/hooks/useCart"
 
 const MiniCart = () => {
+  // Grab the item count from the state so that it can be used as a badge.
   const { state } = useCart();
   const itemCount = state.items.reduce((total, item) => total + item.quantity, 0);
 

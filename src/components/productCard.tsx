@@ -27,7 +27,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <CardHeader>
           <CardTitle>{product.name}</CardTitle>
           <CardDescription>${product.price.toFixed(2)}</CardDescription>
-          {/* TODO Add a placeholder image */}
         </CardHeader>
         <CardFooter className="flex-col gap-2">
           <Button type="button" className="w-full" onClick={handleAddToCart}>

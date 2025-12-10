@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
 import MiniCart from "./miniCart";
 
 const Header = () => {
@@ -10,11 +9,10 @@ const Header = () => {
           <div className="text-2xl font-bold">Mini Madison</div>
         </div>
         <div className="space-x-2 flex items-center">
-          <Button asChild variant='ghost'>
-            <Link to="/">
-              Products
-            </Link>
-          </Button>
+          {/* Use a simple Link for navigation instead of a Button */}
+          <Link className="px-4 py-2 rounded hover:bg-accent transition-colors" to="/">
+            Products
+          </Link>
           <MiniCart />
         </div>
       </div>

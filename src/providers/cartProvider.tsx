@@ -72,6 +72,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 const CART_STORAGE_KEY = "mini-madison/cart";
 
+/**
+ * Loads the initial cart state from localStorage if available, otherwise returns a default state.
+ *
+ * @returns {CartState} The initial cart state with any saved items and promo applied.
+ */
 const getInitialState = (): CartState => {
   if (typeof window === "undefined") return { items: [], appliedPromo: null };
   try {

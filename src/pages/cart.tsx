@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import type { Promo } from "@/types";
 import promosData from "../data/promos.json";
 
+/**
+ * Cart page component.
+ *
+ * Handles rendering the shopping cart, including line items, subtotal, promo code logic,
+ * discounts, and actions for modifying quantities or clearing the cart.
+ *
+ * @returns {JSX.Element} The cart page component.
+ */
 const Cart = () => {
   const { state, removeItem, clearCart, setQuantity, applyPromo, clearPromo } =
     useCart();

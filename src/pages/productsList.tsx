@@ -5,6 +5,11 @@ import productsData from "../data/products.json";
 // Cast the imported data to an array of Product
 const products: Product[] = productsData as Product[];
 
+/**
+ * Displays the list of all products available for purchase.
+ *
+ * @returns {JSX.Element} The rendered products list page.
+ */
 const ProductsList = () => {
   return (
     <div className="px-4 md:px-0">
