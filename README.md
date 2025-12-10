@@ -6,6 +6,8 @@ It is a simple e-commerce proof of concept (POC) built with React, TypeScript, a
 
 ## Getting Started
 
+You can view this project live at https://mini-madison.vercel.app/ or
+
 To run this project locally:
 
 1. **Clone the repository**
