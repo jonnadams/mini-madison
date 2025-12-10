@@ -18,7 +18,13 @@ const Cart = () => {
   const hasItems = state.items.length > 0;
   const [promoInput, setPromoInput] = useState("");
   const [promoError, setPromoError] = useState("");
+  const [quantityInputs, setQuantityInputs] = useState<Record<number, string>>({});
   const promos = promosData as Promo[];
+
+  // Get the display value for quantity input, falling back to actual quantity if not in local state
+  const getQuantityInputValue = (itemId: number, actualQuantity: number): string => {
+    return quantityInputs[itemId] ?? actualQuantity.toString();
+  };
 
   const getDiscountAmount = (subtotal: number, promo?: Promo | null) => {
     if (!promo) return 0;
@@ -107,11 +113,43 @@ const Cart = () => {
                       type="number"
                       min={1}
                       className="w-20 rounded border px-2 py-1"
-                      value={item.quantity}
+                      value={getQuantityInputValue(item.id, item.quantity)}
                       onChange={(e) => {
-                        const next = Number(e.target.value);
-                        if (Number.isNaN(next)) return;
+                        const inputValue = e.target.value;
+                        // Allow empty input temporarily
+                        if (inputValue === "") {
+                          setQuantityInputs((prev) => ({
+                            ...prev,
+                            [item.id]: "",
+                          }));
+                          return;
+                        }
+                        const next = Number(inputValue);
+                        if (Number.isNaN(next) || next < 1) {
+                          // Keep invalid input visible but don't update quantity
+                          setQuantityInputs((prev) => ({
+                            ...prev,
+                            [item.id]: inputValue,
+                          }));
+                          return;
+                        }
+                        // Valid number - update both input and quantity
+                        setQuantityInputs((prev) => ({
+                          ...prev,
+                          [item.id]: inputValue,
+                        }));
                         setQuantity(item.id, next);
+                      }}
+                      onBlur={(e) => {
+                        // On blur, if input is empty or invalid, restore the actual quantity
+                        const inputValue = e.target.value;
+                        if (inputValue === "" || Number(inputValue) < 1) {
+                          setQuantityInputs((prev) => {
+                            const newState = { ...prev };
+                            delete newState[item.id];
+                            return newState;
+                          });
+                        }
                       }}
                     />
                   </div>
